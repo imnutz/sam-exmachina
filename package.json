@@ -1,0 +1,14 @@
+{
+  "name": "exmachina",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "browserify exmachina.js -o bundle.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babelify": "^7.2.0",
+    "snabbdom": "^0.4.2"
+  }
+}
