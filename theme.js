@@ -41,7 +41,7 @@ function marketing(model) {
                     h("header", [ h("h2", "Feugiat Tempus") ]),
                     h("p.subtitle", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, rem."),
                     h("p", [ h("a", { href: "#" }, [ h("img", { src: "images/pics13.png" }) ]) ]),
-                    h("a.button", { href: "#" }, "More")
+                    h("a.button", {props: { href: "#" }}, "More")
                 ])
             ]),
             h("div.3u", [
@@ -49,7 +49,7 @@ function marketing(model) {
                     h("header", [ h("h2", "Feugiat Tempus") ]),
                     h("p.subtitle", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, rem."),
                     h("p", [ h("a", { href: "#" }, [ h("img", { src: "images/pics13.png" }) ]) ]),
-                    h("a.button", { href: "#" }, "More")
+                    h("a.button", {props: { href: "#" }}, "More")
                 ])
             ]),
             h("div.3u", [
@@ -57,7 +57,7 @@ function marketing(model) {
                     h("header", [ h("h2", "Feugiat Tempus") ]),
                     h("p.subtitle", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, rem."),
                     h("p", [ h("a", { href: "#" }, [ h("img", { src: "images/pics13.png" }) ]) ]),
-                    h("a.button", { href: "#" }, "More")
+                    h("a.button", {props: { href: "#" }}, "More")
                 ])
             ]),
             h("div.3u", [
@@ -65,9 +65,9 @@ function marketing(model) {
                     h("header", [ h("h2", "Feugiat Tempus") ]),
                     h("p.subtitle", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, rem."),
                     h("p", [ h("a", { href: "#" }, [ h("img", { src: "images/pics13.png" }) ]) ]),
-                    h("a.button", { href: "#" }, "More")
+                    h("a.button", {props: { href: "#" }}, "More")
                 ])
-            ])                      
+            ])
         ])
     ]);
 }
@@ -148,26 +148,26 @@ function featured(model) {
             h("div.row", [
                 h("section.4u", [
                     h("div.box", [
-                        h("a.image.left", { href: "#" }, [ h("img", { src: "images/pics04.jpg", alt: "" }) ]),
+                        h("a.image.left", { href: "#" }, [ h("img", {props: { src: "images/pics04.jpg", alt: "" }}) ]),
                         h("h3", "Etiam posuere augue"),
                         h("p", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, voluptates."),
-                        h("a.button", { href: "#" })
+                        h("a.button", {props: { href: "#" }}, "More")
                     ])
                 ]),
                 h("section.4u", [
                     h("div.box", [
-                        h("a.image.left", { href: "#" }, [ h("img", { src: "images/pics04.jpg", alt: "" }) ]),
+                        h("a.image.left", { href: "#" }, [ h("img", {props: { src: "images/pics04.jpg", alt: "" }}) ]),
                         h("h3", "Etiam posuere augue"),
                         h("p", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, voluptates."),
-                        h("a.button", { href: "#" })
+                        h("a.button", {props: { href: "#" }}, "More")
                     ])
                 ]),
                 h("section.4u", [
                     h("div.box", [
-                        h("a.image.left", { href: "#" }, [ h("img", { src: "images/pics04.jpg", alt: "" }) ]),
+                        h("a.image.left", { href: "#" }, [ h("img", {props: { src: "images/pics04.jpg", alt: "" }}) ]),
                         h("h3", "Etiam posuere augue"),
                         h("p", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, voluptates."),
-                        h("a.button", { href: "#" })
+                        h("a.button", {props: { href: "#" }}, "More")
                     ])
                 ])
             ]),
@@ -175,10 +175,92 @@ function featured(model) {
         ])
     ]);
 }
-
 function footer(model) {
     return h("div#footer", [
-        h("div.container")
+        h("div.container", [
+            h("div.row", [
+                h("div.3u", [
+                    h("section", [
+                        h("h2", "Maecenas lectus"),
+                        h("div.balloon", [
+                            h("blockquote", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi delectus at libero ratione, debitis. Ullam vero, fuga corporis minima ipsa provident expedita nemo temporibus quo non, id error. Fugiat itaque vitae error totam et architecto nemo qui. Quis expedita inventore accusantium placeat doloribus eaque totam, iusto hic rem sed obcaecati."),
+                            h("br"),
+                            h("strong", "John Dohn")
+                        ]),
+                        h("div.ballon-bgbtm", " ")
+                    ])
+                ]),
+                h("div.3u", [
+                    h("section", [
+                        h("h2", "Donec dictum"),
+                        h("ul.default", [
+                            h("li", [
+                                h("h3", "Mauris vulputate dolor sit amet"),
+                                h("p", [ h("a", {props: {href: "#"}}, "Lorem consequuntur laudantium animi rem.") ])
+                            ]),
+
+                            h("li", [
+                                h("h3", "Mauris vulputate dolor sit amet"),
+                                h("p", [ h("a", {props: {href: "#"}}, "Lorem consequuntur laudantium animi rem.") ])
+                            ]),
+
+                            h("li", [
+                                h("h3", "Mauris vulputate dolor sit amet"),
+                                h("p", [ h("a", {props: {href: "#"}}, "Lorem consequuntur laudantium animi rem.") ])
+                            ])
+                        ])
+                    ])
+                ]),
+                h("div.3u", [
+                    h("section", [
+                        h("h2", "Nulla neifend"),
+                        h("p", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab quia corporis culpa sequi esse quidem laboriosam explicabo tempore non nulla!"),
+                        h("ul.style5", [
+                            h("li", [
+                                h("a", {props: {href: "#"}}, [
+                                    h("img", {props: {src: "images/pics07.jpg", alt: "" }})
+                                ])
+                            ]),
+
+                            h("li", [
+                                h("a", {props: {href: "#"}}, [
+                                    h("img", {props: {src: "images/pics08.jpg", alt: "" }})
+                                ])
+                            ]),
+
+                            h("li", [
+                                h("a", {props: {href: "#"}}, [
+                                    h("img", {props: {src: "images/pics09.jpg", alt: "" }})
+                                ])
+                            ]),
+
+                            h("li", [
+                                h("a", {props: {href: "#"}}, [
+                                    h("img", {props: {src: "images/pics10.jpg", alt: "" }})
+                                ])
+                            ]),
+                            h("li", [
+                                h("a", {props: {href: "#"}}, [
+                                    h("img", {props: {src: "images/pics11.jpg", alt: "" }})
+                                ])
+                            ]),
+                            h("li", [
+                                h("a", {props: {href: "#"}}, [
+                                    h("img", {props: {src: "images/pics12.jpg", alt: "" }})
+                                ])
+                            ])
+                        ])
+                    ])
+                ]),
+                h("div.3u", [
+                    h("h2", "Luctus eleifend"),
+                    h("p", [ h("strong", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, non.") ]),
+                    h("p", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque id ratione error, ipsum, molestiae incidunt ab voluptas numquam amet quae."),
+                    h("p", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed beatae soluta id unde veniam modi voluptates quia expedita recusandae quam."),
+                    h("a.button", {props: {href: "#"}}, "More Collections")
+                ])
+            ])
+        ])
     ])
 }
 

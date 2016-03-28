@@ -24,12 +24,9 @@ function shouldHideSidebar(model) {
 }
 
 function representation(model) {
-    var flag = shouldShowLeft(model);
-    var clazz = (shouldShowLeft(model) ? ".show-left-sidebar" :
-                shouldShowRight(model) ? ".show-right-sidebar" : "");
-
     var mainClazz = shouldShowLeft(model) || shouldShowRight(model) ? "9u" : "12u";
-    return h("div.app" + clazz , [
+
+    return h("div.app", { class: { "show-left-sidebar": shouldShowLeft(model), "show-right-sidebar": shouldShowRight(model) }} , [
         theme.header(model, _actions),
         theme.banner(model),
         theme.page(model, mainClazz),
