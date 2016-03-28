@@ -10,10 +10,10 @@ function header(model, actions) {
             ]),
             h("nav#nav", [
                 h("ul", [
-                    h("li.active", [ h("a", {props: { href: "index.html"}}, "Homepage") ]),
-                    h("li", [ h("a", {props: { href: "#" }, on: { click: function(evt) { evt.preventDefault(); actions.toggleLeftSidebar(); }}}, "Left Sidebar") ]),
-                    h("li", [ h("a", {props: { href: "#"}, on: { click: function(evt) { evt.preventDefault(); actions.toggleRightSidebar(); }}}, "Right Sidebar") ]),
-                    h("li", [ h("a", {props: { href: "#"}, on: { click: function(evt) { evt.preventDefault(); actions.disableSidebar(); }}}, "No Sidebar") ])
+                    h("li", {class: {active: model.atHome}}, [ h("a", {props: { href: "#"}, on: {click: function(evt) { evt.preventDefault(); actions.showHome()}}}, "Homepage") ]),
+                    h("li", {class: {active: model.hasLeftSidebar}}, [ h("a", {props: { href: "#" }, on: { click: function(evt) { evt.preventDefault(); actions.toggleLeftSidebar(); }}}, "Left Sidebar") ]),
+                    h("li", {class: {active: model.hasRightSidebar}}, [ h("a", {props: { href: "#"}, on: { click: function(evt) { evt.preventDefault(); actions.toggleRightSidebar(); }}}, "Right Sidebar") ]),
+                    h("li",  {class: {active: model.noSidebar}},[ h("a", {props: { href: "#"}, on: { click: function(evt) { evt.preventDefault(); actions.disableSidebar(); }}}, "No Sidebar") ])
                 ])
             ])
         ])

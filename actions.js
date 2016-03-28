@@ -8,6 +8,9 @@ function toggleLeftSidebar() {
     var data = {};
 
     data.enabledLeftSidebar = true;
+    data.enabledRightSidebar = false;
+    data.atHome = false;
+    data.noSidebar = false;
 
     _model.present(data);
 }
@@ -16,6 +19,9 @@ function toggleRightSidebar() {
     var data = {};
 
     data.enabledRightSidebar = true;
+    data.enabledLeftSidebar = false;
+    data.atHome = false;
+    data.noSidebar = false;
 
     _model.present(data);
 }
@@ -25,6 +31,17 @@ function disableSidebar() {
 
     data.enabledLeftSidebar = false;
     data.enabledRightSidebar = false;
+    data.atHome = false;
+    data.noSidebar = true;
+
+    _model.present(data);
+}
+
+function showHome() {
+    var data = {};
+
+    data.atHome = true;
+    data.noSidebar = false;
 
     _model.present(data);
 }
@@ -33,5 +50,6 @@ module.exports = {
     bindModel: bindModel,
     toggleLeftSidebar: toggleLeftSidebar,
     toggleRightSidebar: toggleRightSidebar,
-    disableSidebar: disableSidebar
+    disableSidebar: disableSidebar,
+    showHome: showHome
 }
