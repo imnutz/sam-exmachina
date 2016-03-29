@@ -295,7 +295,7 @@ function footer(data) {
 }
 
 function copyright() {
-    return h("div#copyright.container", "This is a copyright &copy;");
+    return h("div#copyright.container", "Design: TEMPLATED Images: Unsplash (CC0)");
 }
 
 module.exports = {
