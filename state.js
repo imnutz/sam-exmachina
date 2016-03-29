@@ -1,4 +1,3 @@
-var h = require("snabbdom/h");
 var theme = require("./theme");
 
 var _actions,
@@ -7,8 +6,13 @@ var _actions,
 function bindActions(actions) {
     _actions = actions;
 }
+
 function bindView(view) {
     _view = view;
+}
+
+function atHome(model) {
+    return model.atHome;
 }
 
 function shouldShowLeft(model) {
@@ -20,20 +24,20 @@ function shouldShowRight(model) {
 }
 
 function shouldHideSidebar(model) {
-    return !model.hasLeftSidebar && !model.hasRightSidebar;
+    return model.noSidebar;
 }
 
 function representation(model) {
     var mainClazz = shouldHideSidebar(model) ? "12u" : "9u";
 
-    return h("div.app", { class: { "show-left-sidebar": shouldShowLeft(model), "show-right-sidebar": shouldShowRight(model) }} , [
-        theme.header(model, _actions),
-        theme.banner(model),
-        theme.page(model, mainClazz),
-        theme.featured(model),
-        theme.footer(model),
-        theme.copyright(model)
-    ]);
+    return theme.website({
+        atHome: atHome(model),
+        hasLeftSidebar: shouldShowLeft(model),
+        hasRightSidebar: shouldShowRight(model),
+        noSidebar: shouldHideSidebar(model),
+        mainClazz: mainClazz,
+        actions: _actions
+    });
 }
 
 function render(model) {

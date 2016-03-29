@@ -991,3 +991,10 @@
 .app.show-right-sidebar .right-sidebar {
 	display: block;
 }
+
+#nosidebar {
+	background-color: gray;
+	padding: 15px 0;
+	color: white;
+	margin-top: 30px;
+}

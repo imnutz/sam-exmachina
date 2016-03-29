@@ -1,6 +1,17 @@
 var h = require("snabbdom/h");
 
-function header(model, actions) {
+function website(viewState) {
+    return h("div.app", { class: { "show-left-sidebar": viewState.hasLeftSidebar, "show-right-sidebar": viewState.hasRightSidebar }}, [
+        header(viewState),
+        banner(),
+        page(viewState),
+        featured(),
+        footer(),
+        copyright()       
+    ]);
+}
+
+function header(viewState) {
     return h("div#header", [
         h("div.container", [
             h("div#logo", [
@@ -10,30 +21,49 @@ function header(model, actions) {
             ]),
             h("nav#nav", [
                 h("ul", [
-                    h("li", {class: {active: model.atHome}}, [ h("a", {props: { href: "#"}, on: {click: function(evt) { evt.preventDefault(); actions.showHome()}}}, "Homepage") ]),
-                    h("li", {class: {active: model.hasLeftSidebar}}, [ h("a", {props: { href: "#" }, on: { click: function(evt) { evt.preventDefault(); actions.toggleLeftSidebar(); }}}, "Left Sidebar") ]),
-                    h("li", {class: {active: model.hasRightSidebar}}, [ h("a", {props: { href: "#"}, on: { click: function(evt) { evt.preventDefault(); actions.toggleRightSidebar(); }}}, "Right Sidebar") ]),
-                    h("li",  {class: {active: model.noSidebar}},[ h("a", {props: { href: "#"}, on: { click: function(evt) { evt.preventDefault(); actions.disableSidebar(); }}}, "No Sidebar") ])
+                    h("li", {class: {active: viewState.atHome}}, [ 
+                        h("a", {props: { href: "#"}, on: { click: viewState.actions.showHome }}, "Homepage") 
+                    ]),
+                    h("li", {class: {active: viewState.hasLeftSidebar}}, [ 
+                        h("a", {props: { href: "#" }, on: { click: viewState.actions.toggleLeftSidebar }}, "Left Sidebar") 
+                    ]),
+                    h("li", {class: {active: viewState.hasRightSidebar}}, [ 
+                        h("a", {props: { href: "#"}, on: { click: viewState.actions.toggleRightSidebar }}, "Right Sidebar")
+                    ]),
+                    h("li",  {class: {active: viewState.noSidebar}},[ 
+                        h("a", {props: { href: "#"}, on: { click: viewState.actions.disableSidebar }}, "No Sidebar")
+                    ])
                 ])
             ])
         ])
     ]);
 }
 
-function banner(model) {
+function noSidebarMessage() {
+    return h("div#nosidebar", [
+        h("div.container", [
+            h("h1", "Look ma! It has no sidebar ;)")
+        ])
+    ]);   
+}
+
+function banner() {
     return h("div#banner", [
         h("div.container")
     ]);
 }
 
-function page(model, mainClazz) {
+function page(viewState) {
+    var noSidebarMsg = viewState.noSidebar ? noSidebarMessage() : "";
+
     return h("div#page", [
-        marketing(model),
-        main(model, mainClazz)
+        marketing(viewState.marketingData),
+        noSidebarMsg,
+        main(viewState.mainClazz)
     ]);
 }
 
-function marketing(model) {
+function marketing(data) {
     return h("div#marketing.container", [
         h("div.row", [
             h("div.3u", [
@@ -72,10 +102,10 @@ function marketing(model) {
     ]);
 }
 
-function main(model, clazz) {
+function main(clazz) {
     return h("div#main.container", [
         h("div.row", [
-            leftSidebar(model),
+            leftSidebar(),
             h("div." + clazz, [
                 h("section", [
                     h("header", [ h("h2", "Feugiat Tempus"), h("span.byline"), "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum, iste." ]),
@@ -83,12 +113,12 @@ function main(model, clazz) {
                     h("p", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati consectetur dolore, minima aliquam tempore placeat totam, nisi eos, architecto temporibus recusandae minus in. Aperiam alias tenetur consectetur excepturi, libero nisi?")
                 ])
             ]),
-            rightSidebar(model)
+            rightSidebar()
         ])
     ]);
 }
 
-function leftSidebar(model) {
+function leftSidebar() {
     return h("div.3u.left-sidebar", [
         h("section.sidebar", [
             h("header", [ h("h2", "Feugiat Tempus") ]),
@@ -115,7 +145,7 @@ function leftSidebar(model) {
     ]);
 }
 
-function rightSidebar(model) {
+function rightSidebar() {
     return h("div.3u.right-sidebar", [
         h("section.sidebar", [
             h("header", [ h("h2", "Feugiat Tempus") ]),
@@ -142,7 +172,7 @@ function rightSidebar(model) {
     ]);
 }
 
-function featured(model) {
+function featured(data) {
     return h("div#featured", [
         h("div.container", [
             h("div.row", [
@@ -175,7 +205,7 @@ function featured(model) {
         ])
     ]);
 }
-function footer(model) {
+function footer(data) {
     return h("div#footer", [
         h("div.container", [
             h("div.row", [
@@ -264,11 +294,12 @@ function footer(model) {
     ])
 }
 
-function copyright(model) {
+function copyright() {
     return h("div#copyright.container", "This is a copyright &copy;");
 }
 
 module.exports = {
+    website: website,
     header: header,
     banner: banner,
     page: page,
