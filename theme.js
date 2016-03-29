@@ -25,10 +25,10 @@ function header(viewState) {
                         h("a", {props: { href: "#"}, on: { click: viewState.actions.showHome }}, "Homepage") 
                     ]),
                     h("li", {class: {active: viewState.hasLeftSidebar}}, [ 
-                        h("a", {props: { href: "#" }, on: { click: viewState.actions.toggleLeftSidebar }}, "Left Sidebar") 
+                        h("a", {props: { href: "#" }, on: { click: viewState.actions.showLeftSidebar }}, "Left Sidebar") 
                     ]),
                     h("li", {class: {active: viewState.hasRightSidebar}}, [ 
-                        h("a", {props: { href: "#"}, on: { click: viewState.actions.toggleRightSidebar }}, "Right Sidebar")
+                        h("a", {props: { href: "#"}, on: { click: viewState.actions.showRightSidebar }}, "Right Sidebar")
                     ]),
                     h("li",  {class: {active: viewState.noSidebar}},[ 
                         h("a", {props: { href: "#"}, on: { click: viewState.actions.disableSidebar }}, "No Sidebar")

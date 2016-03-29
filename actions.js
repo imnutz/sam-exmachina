@@ -4,7 +4,7 @@ function bindModel(model) {
     _model = model;
 }
 
-function toggleLeftSidebar() {
+function showLeftSidebar() {
     var data = {};
 
     data.enabledLeftSidebar = true;
@@ -15,7 +15,7 @@ function toggleLeftSidebar() {
     _model.present(data);
 }
 
-function toggleRightSidebar() {
+function showRightSidebar() {
     var data = {};
 
     data.enabledRightSidebar = true;
@@ -48,8 +48,8 @@ function showHome() {
 
 module.exports = {
     bindModel: bindModel,
-    toggleLeftSidebar: toggleLeftSidebar,
-    toggleRightSidebar: toggleRightSidebar,
+    showLeftSidebar: showLeftSidebar,
+    showRightSidebar: showRightSidebar,
     disableSidebar: disableSidebar,
     showHome: showHome
 }
