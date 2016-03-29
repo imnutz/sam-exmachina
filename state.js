@@ -11,6 +11,10 @@ function bindView(view) {
     _view = view;
 }
 
+function onInit(model) {
+    return model.initialize;
+}
+
 function atHome(model) {
     return model.atHome;
 }
@@ -36,12 +40,20 @@ function representation(model) {
         hasRightSidebar: shouldShowRight(model),
         noSidebar: shouldHideSidebar(model),
         mainClazz: mainClazz,
-        actions: _actions
+        actions: _actions,
+        marketings: model.marketings || []
     });
 }
 
 function render(model) {
     _view.display(representation(model));
+    nextAction(model);
+}
+
+function nextAction(model) {
+    if(onInit(model)) {
+        _actions.showHome();
+    }
 }
 
 module.exports = {

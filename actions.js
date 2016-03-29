@@ -1,3 +1,5 @@
+var services = require("./services");
+
 var _model;
 
 function bindModel(model) {
@@ -40,10 +42,16 @@ function disableSidebar() {
 function showHome() {
     var data = {};
 
-    data.atHome = true;
-    data.noSidebar = false;
+    services
+        .getMarketingData()
+        .then(function(response) {
+            data.initialize = false;
+            data.atHome = true;
+            data.noSidebar = false;
+            data.marketings = response;
 
-    _model.present(data);
+            _model.present(data);
+        });
 }
 
 module.exports = {
@@ -52,4 +60,4 @@ module.exports = {
     showRightSidebar: showRightSidebar,
     disableSidebar: disableSidebar,
     showHome: showHome
-}
+};

@@ -9,6 +9,7 @@
   "license": "ISC",
   "devDependencies": {
     "babelify": "^7.2.0",
+    "reqwest": "^2.0.5",
     "snabbdom": "^0.4.2"
   }
 }

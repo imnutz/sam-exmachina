@@ -57,48 +57,26 @@ function page(viewState) {
     var noSidebarMsg = viewState.noSidebar ? noSidebarMessage() : "";
 
     return h("div#page", [
-        marketing(viewState.marketingData),
+        marketing(viewState.marketings),
         noSidebarMsg,
         main(viewState.mainClazz)
     ]);
 }
 
 function marketing(data) {
-    return h("div#marketing.container", [
-        h("div.row", [
-            h("div.3u", [
-                h("section", [
-                    h("header", [ h("h2", "Feugiat Tempus") ]),
-                    h("p.subtitle", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, rem."),
-                    h("p", [ h("a", { href: "#" }, [ h("img", { src: "images/pics13.png" }) ]) ]),
-                    h("a.button", {props: { href: "#" }}, "More")
-                ])
-            ]),
-            h("div.3u", [
-                h("section", [
-                    h("header", [ h("h2", "Feugiat Tempus") ]),
-                    h("p.subtitle", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, rem."),
-                    h("p", [ h("a", { href: "#" }, [ h("img", { src: "images/pics13.png" }) ]) ]),
-                    h("a.button", {props: { href: "#" }}, "More")
-                ])
-            ]),
-            h("div.3u", [
-                h("section", [
-                    h("header", [ h("h2", "Feugiat Tempus") ]),
-                    h("p.subtitle", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, rem."),
-                    h("p", [ h("a", { href: "#" }, [ h("img", { src: "images/pics13.png" }) ]) ]),
-                    h("a.button", {props: { href: "#" }}, "More")
-                ])
-            ]),
-            h("div.3u", [
-                h("section", [
-                    h("header", [ h("h2", "Feugiat Tempus") ]),
-                    h("p.subtitle", "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, rem."),
-                    h("p", [ h("a", { href: "#" }, [ h("img", { src: "images/pics13.png" }) ]) ]),
-                    h("a.button", {props: { href: "#" }}, "More")
-                ])
+    function marketingItem(item) {
+        return h("div.3u", [
+            h("section", [
+                h("header", [ h("h2", item.header) ]),
+                h("p.subtitle", item.subtitle),
+                h("p", [ h("a", { href: "#" }, [ h("img", {props: { src: "images/" + item.image }}) ]) ]),
+                h("a.button", {props: { href: "#" }}, "More")
             ])
-        ])
+        ]);
+    }
+
+    return h("div#marketing.container", [
+        h("div.row", data.map(marketingItem))
     ]);
 }
 

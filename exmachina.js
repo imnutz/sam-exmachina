@@ -11,4 +11,4 @@ function wire(state, model, actions, view) {
 }
 
 wire(state, model, actions, view);
-view.display(state.representation(model.init()));
+state.render(model.init());
